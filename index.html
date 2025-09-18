@@ -6,127 +6,128 @@
     <title>AIプログラミング学習コミュニティ</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-dark: #0a0a18;
-            --bg-light-translucent: rgba(22, 27, 34, 0.6);
-            --border-color: rgba(139, 148, 158, 0.3);
-            --text-primary: #e6edf3;
-            --text-secondary: #a1aab8;
-            --accent-glow: #00f2ff;
-            --accent-gradient: linear-gradient(90deg, #00f2ff, #818cf8);
-            --accent-hover: linear-gradient(90deg, #5ffbff, #a5b4fc);
+            --bg-color: #0d0d21;
+            --primary-color: #e5e5e5;
+            --secondary-color: #a0a0b0;
+            --accent-color: #00f7ff;
+            --container-bg: rgba(20, 20, 45, 0.7);
+            --border-color: rgba(0, 247, 255, 0.3);
+            --border-hover-color: rgba(0, 247, 255, 0.7);
         }
 
         body {
-            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
-            line-height: 1.8;
+            font-family: 'Noto Sans JP', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-color);
             margin: 0;
-            padding: 0;
-            background-color: var(--bg-dark);
-            color: var(--text-primary);
+            line-height: 1.7;
+            background-image: 
+                linear-gradient(rgba(0, 247, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 247, 255, 0.05) 1px, transparent 1px);
+            background-size: 40px 40px;
+            animation: move-grid 60s linear infinite;
             overflow-x: hidden;
         }
 
-        /* Animated Starry Background */
-        .background-container {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            z-index: -1;
+        @keyframes move-grid {
+            from { background-position: 0 0; }
+            to { background-position: 400px 400px; }
         }
-        @keyframes move-stars {
-            from {transform: translateY(0px);}
-            to {transform: translateY(-2000px);}
+
+        h1, h2, h3 {
+            font-family: 'VT323', monospace;
+            color: var(--accent-color);
+            text-shadow: 0 0 5px var(--accent-color);
+            letter-spacing: 2px;
+            font-weight: normal;
         }
-        .stars, .stars2, .stars3 {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            display: block;
-            background: transparent;
+
+        .pixel-font {
+            font-family: 'VT323', monospace;
+            image-rendering: pixelated;
+            -webkit-font-smoothing: none;
+            font-smooth: never;
         }
-        .stars { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000"><circle fill="%23fff" cx="100" cy="100" r="1"/><circle fill="%23fff" cx="300" cy="400" r="1"/><circle fill="%23fff" cx="500" cy="200" r="0.5"/><circle fill="%23fff" cx="800" cy="600" r="1"/><circle fill="%23fff" cx="1200" cy="300" r="0.5"/><circle fill="%23fff" cx="1500" cy="500" r="1"/><circle fill="%23fff" cx="1800" cy="200" r="0.5"/></svg>'); animation: move-stars 200s linear infinite; }
-        .stars2 { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000"><circle fill="%23fff" cx="200" cy="800" r="1"/><circle fill="%23fff" cx="600" cy="1200" r="0.5"/><circle fill="%23fff" cx="1000" cy="900" r="1"/><circle fill="%23fff" cx="1400" cy="1100" r="0.5"/><circle fill="%23fff" cx="1700" cy="900" r="1"/></svg>'); animation: move-stars 150s linear infinite; }
-        .stars3 { background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000"><circle fill="%23fff" cx="400" cy="1500" r="1"/><circle fill="%23fff" cx="900" cy="1800" r="0.5"/><circle fill="%23fff" cx="1300" cy="1600" r="1"/><circle fill="%23fff" cx="1900" cy="1400" r="0.5"/></svg>'); animation: move-stars 100s linear infinite; }
 
         .container {
             width: 90%;
-            max-width: 1000px;
-            margin: auto;
+            max-width: 960px;
+            margin: 0 auto;
             padding: 0 20px;
-            position: relative;
-            z-index: 2;
         }
 
         header {
-            background: rgba(13, 17, 23, 0.5);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
             padding: 20px 0;
-            border-bottom: 1px solid var(--border-color);
             position: sticky;
             top: 0;
             z-index: 100;
+            background: rgba(13, 13, 33, 0.8);
+            backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--border-color);
         }
 
         header h1 {
+            font-size: 2em;
             text-align: center;
             margin: 0;
-            font-size: 1.5em;
-            font-weight: 500;
-            letter-spacing: 1px;
         }
 
         .hero {
-            padding: 120px 0;
-            text-align: center;
             min-height: 80vh;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 0;
         }
 
         .hero h2 {
-            font-size: 3.8em;
-            margin-bottom: 20px;
-            font-weight: 700;
-            background: var(--accent-gradient);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-            text-shadow: 0 0 20px rgba(0, 242, 255, 0.3);
+            font-size: 4.5em;
+            margin: 0 0 20px 0;
         }
 
         .hero p {
-            font-size: 1.2em;
-            color: var(--text-secondary);
-            max-width: 600px;
-            margin: 0 auto 40px auto;
+            font-size: 1.1em;
+            color: var(--secondary-color);
+            max-width: 550px;
+            margin-bottom: 40px;
+        }
+
+        /* Pixelated Borders */
+        .pixel-box {
+            background: var(--container-bg);
+            border: 4px solid transparent;
+            border-image: url('data:image/svg+xml;charset=utf-8,<svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg"><path d="M0 3h3v3H0zM3 0h3v3H3zM6 3h3v3H6zM3 6h3v3H3z" fill="%2300f7ff"/></svg>') 3;
+            image-rendering: pixelated;
+            padding: 40px;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .pixel-box:hover {
+            box-shadow: 0 0 20px rgba(0, 247, 255, 0.3);
         }
 
         .btn {
-            display: inline-block;
-            background: var(--accent-gradient);
-            color: #000;
-            padding: 16px 40px;
+            font-family: 'VT323', monospace;
+            font-size: 1.5em;
+            color: var(--accent-color);
             text-decoration: none;
-            border-radius: 50px;
-            font-size: 1.1em;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            box-shadow: 0 0 25px rgba(0, 242, 255, 0.4), inset 0 0 10px rgba(255,255,255,0.3);
+            padding: 12px 24px;
+            background: var(--container-bg);
+            border: 2px solid var(--border-color);
+            box-shadow: inset 0 0 10px rgba(0, 247, 255, 0.2);
+            transition: all 0.2s ease-in-out;
         }
 
         .btn:hover {
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 0 40px rgba(129, 140, 248, 0.6);
+            background: rgba(0, 247, 255, 0.1);
+            border-color: var(--border-hover-color);
+            color: #fff;
+            text-shadow: 0 0 10px #fff;
         }
 
         .main {
@@ -134,123 +135,101 @@
         }
 
         .section {
-            margin-bottom: 80px;
-            background: var(--bg-light-translucent);
-            padding: 40px;
-            border-radius: 16px;
-            border: 1px solid var(--border-color);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            margin-bottom: 60px;
         }
 
         .section h3 {
-            font-size: 2.2em;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-top: 0;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 15px;
+            font-size: 2.5em;
+            margin: -40px -40px 30px -40px;
+            padding: 20px 40px;
+            background: rgba(0,0,0,0.2);
+            border-bottom: 4px solid transparent;
+            border-image: url('data:image/svg+xml;charset=utf-8,<svg width="9" height="9" viewBox="0 0 9 9" xmlns="http://www.w3.org/2000/svg"><path d="M0 3h3v3H0zM3 0h3v3H3zM6 3h3v3H6zM3 6h3v3H3z" fill="%2300f7ff"/></svg>') 3;
         }
 
-        .features ul {
+        .features ul, .target ul {
             list-style: none;
             padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 25px;
         }
 
-        .features li {
-            background: rgba(13, 17, 23, 0.7);
-            padding: 25px;
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
-            transition: all 0.3s ease;
-            font-size: 1em;
-        }
-        
-        .features li:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-glow);
-            box-shadow: 0 0 20px rgba(0, 242, 255, 0.2);
-        }
-
-        .features li::before { content: '✨'; margin-right: 15px; font-size: 1.2em; }
-
-        .target ul { list-style: none; padding: 0; }
-        .target li {
-            font-size: 1.1em;
-            margin-bottom: 15px;
+        .features li, .target li {
             padding-left: 25px;
             position: relative;
+            margin-bottom: 15px;
+            font-size: 1.1em;
         }
-        .target li::before { content: '✓'; color: #818cf8; position: absolute; left: 0; font-weight: bold; }
+
+        .features li::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-image: url('data:image/svg+xml;charset=utf-8,<svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M5 0h2v2h2v2h2v2h-2v2h-2v2H5v-2H3v-2H1V2h2V0h2z" fill="%2300f7ff"/></svg>');
+            image-rendering: pixelated;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
+        
+        .target li::before {
+            content: '';
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            background-image: url('data:image/svg+xml;charset=utf-8,<svg width="12" height="12" viewBox="0 0 12 12" xmlns="http://www.w3.org/2000/svg"><path d="M0 6h2v2h2v2h2v2h2V0H0v6z" fill="%2300f7ff"/></svg>');
+            image-rendering: pixelated;
+            position: absolute;
+            left: 0;
+            top: 8px;
+        }
 
         .cta {
             text-align: center;
-            padding: 80px 20px;
+            padding: 60px 20px;
         }
-
-        .cta h3 { font-size: 2.8em; font-weight: 600; margin-bottom: 20px; }
+        .cta h3 { font-size: 2.8em; margin-bottom: 20px; }
 
         footer {
             text-align: center;
             padding: 40px 20px;
-            margin-top: 60px;
-            border-top: 1px solid var(--border-color);
-            color: var(--text-secondary);
-            background: rgba(13, 17, 23, 0.5);
+            color: var(--secondary-color);
+            border-top: 2px solid var(--border-color);
         }
 
         /* Scroll Animation */
         .reveal-on-scroll {
             opacity: 0;
-            transform: translateY(50px);
-            transition: opacity 1s ease-out, transform 1.2s cubic-bezier(0.165, 0.84, 0.44, 1);
+            filter: blur(5px);
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out, filter 0.8s ease-out;
         }
         .reveal-on-scroll.is-visible {
             opacity: 1;
+            filter: blur(0);
             transform: translateY(0);
-        }
-
-        @media (max-width: 768px) {
-            .hero h2 { font-size: 2.8em; }
-            .section h3, .cta h3 { font-size: 2em; }
-            header h1 { font-size: 1.2em; }
         }
     </style>
 </head>
 <body>
-    <div class="background-container">
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
-    </div>
-
     <header>
-        <div class="container">
-            <h1>AIプログラミング学習コミュニティ</h1>
-        </div>
+        <h1 class="pixel-font">AI-Programming-Community</h1>
     </header>
 
-    <main class="container">
+    <div class="container">
         <section class="hero reveal-on-scroll">
-            <h2>未来を創る、AIプログラミングを学ぼう</h2>
+            <h2 class="pixel-font">未来を創る、AIプログラミングを学ぼう</h2>
             <p>未経験からでも大丈夫。仲間と一緒に、最新のAI技術を実践的に学びましょう。</p>
-            <a href="#" class="btn">今すぐDiscordに参加する</a>
+            <a href="#" class="btn pixel-font">Join Discord</a>
         </section>
 
-        <div class="main">
-            <section class="section about reveal-on-scroll">
-                <h3>私たちのコミュニティについて</h3>
+        <main class="main">
+            <section class="section pixel-box reveal-on-scroll">
+                <h3 class="pixel-font">Community</h3>
                 <p>AI技術の進化は止まりません。一人で学ぶのは大変ですが、仲間がいれば乗り越えられます。当コミュニティは、初心者から上級者まで、AIプログラミングに情熱を持つ人々が集まり、共に学び、成長するための場所です。</p>
             </section>
 
-            <section class="section features reveal-on-scroll">
-                <h3>このコミュニティでできること</h3>
+            <section class="section features pixel-box reveal-on-scroll">
+                <h3 class="pixel-font">Features</h3>
                 <ul>
                     <li>分からないことを気軽に質問＆相談</li>
                     <li>仲間とチームを組んで、AIアプリ開発プロジェクトに参加</li>
@@ -260,8 +239,8 @@
                 </ul>
             </section>
 
-            <section class="section target reveal-on-scroll">
-                <h3>こんな方におすすめ</h3>
+            <section class="section target pixel-box reveal-on-scroll">
+                <h3 class="pixel-font">For You</h3>
                 <ul>
                     <li>AIプログラミングに興味があるけど、何から始めればいいか分からない方</li>
                     <li>一緒に学ぶ仲間を見つけたい方</li>
@@ -272,35 +251,28 @@
             </section>
 
             <section class="cta reveal-on-scroll">
-                <h3>さあ、あなたもコミュニティに参加しよう！</h3>
+                <h3 class="pixel-font">さあ、あなたもコミュニティに参加しよう！</h3>
                 <p>参加はとても簡単です。下のボタンからDiscordサーバーに参加するだけ！</p>
-                <a href="#" class="btn">Discord参加はこちらから</a>
+                <a href="#" class="btn pixel-font">参加はこちらから</a>
             </section>
-        </div>
-    </main>
+        </main>
+    </div>
 
     <footer class="reveal-on-scroll">
-        <p>&copy; 2025 AIプログラミング学習コミュニティ. All Rights Reserved.</p>
+        <p class="pixel-font">&copy; 2025 AI-Programming-Community</p>
     </footer>
 
     <script>
         const revealElements = document.querySelectorAll(".reveal-on-scroll");
-
-        const observer = new IntersectionObserver((entries, observer) => {
+        const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add("is-visible");
-                    // Optional: Stop observing the element once it's visible
-                    // observer.unobserve(entry.target);
                 }
             });
-        }, {
-            threshold: 0.1 // Trigger when 10% of the element is visible
-        });
+        }, { threshold: 0.1 });
 
-        revealElements.forEach(element => {
-            observer.observe(element);
-        });
+        revealElements.forEach(element => observer.observe(element));
     </script>
 </body>
 </html>
