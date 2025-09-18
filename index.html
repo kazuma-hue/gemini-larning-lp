@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIプログラミング学習コミュニティ</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Noto+Sans+JP:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0d1117;
+            --bg-light: #161b22;
+            --border-color: #30363d;
+            --text-primary: #c9d1d9;
+            --text-secondary: #8b949e;
+            --accent-gradient: linear-gradient(90deg, #38bdf8, #818cf8);
+            --accent-hover: linear-gradient(90deg, #7dd3fc, #a5b4fc);
+        }
+
+        body {
+            font-family: 'Poppins', 'Noto Sans JP', sans-serif;
+            line-height: 1.8;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1100px;
+            margin: auto;
+            overflow: hidden;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(13, 17, 23, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 20px 0;
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            text-align: center;
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: 600;
+        }
+
+        .hero {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .hero h2 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto 30px auto;
+            animation: fadeInUp 1s ease-out 0.2s;
+            animation-fill-mode: backwards;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent-gradient);
+            color: #fff;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-size: 1.1em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+            animation: fadeInUp 1s ease-out 0.4s;
+            animation-fill-mode: backwards;
+        }
+
+        .btn:hover {
+            background: var(--accent-hover);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 25px rgba(129, 140, 248, 0.4);
+        }
+
+        .main {
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 60px;
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .section h3 {
+            font-size: 2.2em;
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 15px;
+        }
+
+        .features ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .features li {
+            background: var(--bg-dark);
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+            transition: border-color 0.3s ease, transform 0.3s ease;
+            font-size: 1em;
+        }
+        
+        .features li:hover {
+            transform: translateY(-5px);
+            border-color: #38bdf8;
+        }
+
+        .features li::before {
+            content: '✨';
+            margin-right: 15px;
+            font-size: 1.2em;
+        }
+
+        .target ul {
+            list-style: none;
+            padding: 0;
+        }
+        .target li {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .target li::before {
+            content: '✓';
+            color: #818cf8;
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        .cta {
+            text-align: center;
+            padding: 80px 20px;
+            background: var(--bg-light);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cta h3 {
+            font-size: 2.8em;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-secondary);
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2.5em; }
+            .section h3, .cta h3 { font-size: 2em; }
+            header h1 { font-size: 1.5em; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>AIプログラミング学習コミュニティ</h1>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h2>未来を創る、AIプログラミングを学ぼう</h2>
+            <p>未経験からでも大丈夫。仲間と一緒に、最新のAI技術を実践的に学びましょう。</p>
+            <a href="#" class="btn">今すぐDiscordに参加する</a>
+        </div>
+    </section>
+
+    <div class="container main">
+        <section class="section about">
+            <h3>私たちのコミュニティについて</h3>
+            <p>AI技術の進化は止まりません。一人で学ぶのは大変ですが、仲間がいれば乗り越えられます。当コミュニティは、初心者から上級者まで、AIプログラミングに情熱を持つ人々が集まり、共に学び、成長するための場所です。</p>
+        </section>
+
+        <section class="section features">
+            <h3>このコミュニティでできること</h3>
+            <ul>
+                <li>分からないことを気軽に質問＆相談</li>
+                <li>仲間とチームを組んで、AIアプリ開発プロジェクトに参加</li>
+                <li>最新のAI論文や技術ニュースの情報をキャッチアップ</li>
+                <li>お互いのコードをレビューし合い、実践的なスキルを向上</li>
+                <li>定期的なオンライン勉強会やもくもく会</li>
+            </ul>
+        </section>
+
+        <section class="section target">
+            <h3>こんな方におすすめ</h3>
+            <ul>
+                <li>AIプログラミングに興味があるけど、何から始めればいいか分からない方</li>
+                <li>一緒に学ぶ仲間を見つけたい方</li>
+                <li>独学に限界を感じている方</li>
+                <li>実践的なポートフォリオを作りたい方</li>
+                <li>最新のAIトレンドを追いかけたい方</li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="cta">
+        <div class="container">
+            <h3>さあ、あなたもコミュニティに参加しよう！</h3>
+            <p>参加はとても簡単です。下のボタンからDiscordサーバーに参加するだけ！</p>
+            <a href="#" class="btn">Discord参加はこちらから</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 AIプログラミング学習コミュニティ. All Rights Reserved.</p>
+    </footer>
+</body>
+</html>
